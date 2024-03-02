@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validator</title>
+    <style>
+      form {
+        width: 500px;
+        height: 260px;
+        margin: auto;
+        border: 1px solid grey;
+      }
+
+      form label {
+        padding: 10px 20px;
+        font-weight: bold;
+      }
+
+      form input {
+        display: block;
+        width: 400px;
+        margin: 10px 40px;
+      }
+      form button {
+        position: absolute;
+        left: 47.5%;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        background-color: grey;
+        color: #fff;
+        font-size: 16px;
+        margin: 10px 0;
+      }
+      form span {
+        display: block;
+        margin: 5px 0;
+        text-align: center;
+      }
+      h2 {
+        text-align: center;
+        font-size: 32px;
+        text-decoration: solid red underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>Form Validator</h2>
+      <form onsubmit=" return verifyPasswrd()">
+        <label for="name" class="lb">Name:-</label>
+        <input type="text" placeholder="Enter your name" id="nm" />
+        <span id="msg1" style="color: red"></span>
+        <label for="age" class="lb">Age:-</label>
+        <input type="number" placeholder="Enter your age" id="ag" />
+        <span id="msg2" style="color: red"></span>
+        <label for="mobile" class="lb">Number:-</label>
+        <input type="number" placeholder="Enter your number" id="num" />
+        <span id="msg3" style="color: red"></span>
+        <button>Submit</button>
+      </form>
+    </div>
+    <script>
+      function verifyPasswrd() {
+        var nm = document.getElementById("nm").value;
+        var ag = document.getElementById("ag").value;
+        var num = document.getElementById("num").value;
+
+        var nm1 = document.getElementById("nm");
+        var ag2 = document.getElementById("ag");
+        var num3 = document.getElementById("num");
+
+        if (nm == "") {
+          document.getElementById("msg1").innerHTML = "*name field is required";
+          nm1.style.border = "1px solid red";
+          return false;
+        }
+        if (nm.length < 3) {
+          document.getElementById("msg1").innerHTML =
+            "*name should be of atleast 3 character";
+          nm1.style.border = "1px solid red";
+          return false;
+        }
+        if (ag == "") {
+          document.getElementById("msg2").innerHTML = "*age field is required";
+          ag2.style.border = "1px solid red";
+          return false;
+        }
+        if (ag.length < 2) {
+          document.getElementById("msg2").innerHTML =
+            "*name should be greater than 18 and less than 100";
+          ag2.style.border = "1px solid red";
+          return false;
+        }
+        if (ag.length > 3) {
+          document.getElementById("msg2").innerHTML =
+            "*name should be less than 3 character";
+          ag2.style.border = "1px solid red";
+          return false;
+        }
+
+        if (num == "") {
+          document.getElementById("msg3").innerHTML =
+            "*number field is required";
+          num3.style.border = "1px solid red";
+          return false;
+        }
+        if (num.length < 10) {
+          document.getElementById("msg3").innerHTML =
+            "*number should be of 10 characters";
+          num3.style.border = "1px solid red";
+          return false;
+        }
+        if (num.length > 10) {
+          document.getElementById("msg3").innerHTML =
+            "*number should be of 10 characters only";
+          num3.style.border = "1px solid red";
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
